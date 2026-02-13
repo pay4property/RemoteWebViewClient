@@ -25,6 +25,10 @@ static inline void websocket_force_reconnect(esp_websocket_client_handle_t clien
   esp_websocket_client_start(client);
 }
 
+void RemoteWebView::display_refresh() {
+  websocket_force_reconnect(ws_client_);
+}
+
 void RemoteWebView::setup() {
   self_ = this;
 
