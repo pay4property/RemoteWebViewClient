@@ -49,6 +49,7 @@ class RemoteWebView : public Component {
   void disable_display(bool disable);
   bool open_url(const std::string &s);
 
+  void display_refresh() override;
   void setup() override;
   void loop() override {}
   void dump_config() override;
