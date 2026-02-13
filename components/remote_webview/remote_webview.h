@@ -90,6 +90,7 @@ class RemoteWebView : public Component {
   bool rgb565_big_endian_{true};
   int rotation_{0};
   bool touch_disabled_{false};
+  bool display_disabled_{false};
 
 #if REMOTE_WEBVIEW_HW_JPEG
   jpeg_decoder_handle_t hw_dec_{nullptr};
