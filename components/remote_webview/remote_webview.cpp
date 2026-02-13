@@ -374,6 +374,7 @@ void RemoteWebView::process_frame_stats_packet_(const uint8_t *data, size_t len)
 
 bool RemoteWebView::decode_jpeg_tile_to_lcd_(int16_t dst_x, int16_t dst_y, const uint8_t *data, size_t len) {
   if (!data || !len) return false;
+  if (display_disabled_) return true;  
 
 #if REMOTE_WEBVIEW_HW_JPEG
   if (hw_dec_ && hw_decode_input_buf_ && hw_decode_output_buf_) {
@@ -453,6 +454,7 @@ int RemoteWebView::jpeg_draw_cb_(JPEGDRAW *p) {
   if (x + w > display_width_) w = display_width_ - x;
   if (y + h > display_height_) h = display_height_ - y;
   if (w <= 0 || h <= 0) return 1;
+  if (display_disabled_) return 1;
 
   display_->draw_pixels_at(
       x, y, w, h,
