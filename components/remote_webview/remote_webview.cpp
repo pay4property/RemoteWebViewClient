@@ -571,7 +571,12 @@ void RemoteWebViewTouchListener::touch(touchscreen::TouchPoint tp) {
 
 void RemoteWebView::disable_touch(bool disable) {
   touch_disabled_ = disable;
-  ESP_LOGD(TAG, "touch %s", disable ? "disabled" : "enabled");
+  ESP_LOGD(TAG, "RWV touch %s", disable ? "disabled" : "enabled");
+}
+
+void RemoteWebView::disable_display(bool disable) {
+  display_disabled_ = disable;
+  ESP_LOGD(TAG, "RWV display %s", disable ? "disabled" : "enabled");
 }
 
 void RemoteWebView::set_server(const std::string &s) {
