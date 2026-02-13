@@ -26,6 +26,7 @@ static inline void websocket_force_reconnect(esp_websocket_client_handle_t clien
 }
 
 void RemoteWebView::display_refresh() {
+  ESP_LOGD(TAG, "Refresh full frame");
   if (display_disabled_) {
     disable_display(false);   
     websocket_force_reconnect(ws_client_);
